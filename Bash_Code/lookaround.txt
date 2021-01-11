@@ -1,0 +1,13 @@
+text="<b>Learn to Analyze Text Data</b>"
+regex="(?<=<b>).+?(?=</b>)"  
+
+  /**
+  Explaination:
+  (?<= 	start the lookbehind
+  <b> 	match the bold tag open
+  ) 	end the Lookbehind
+  .+? 	match one or more chars lazily
+  (?= 	start the lookahead
+  </b> 	match the bold tag close
+  ) 	end the Lookahead
+*/
