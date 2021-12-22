@@ -13,16 +13,6 @@ int main()
     while (t--)
     {
         scanf("%d %d %d",&n,&a,&b);
-
-        // for(int i=0; i<b; i++) {
-        //     s[i] = c+i;
-        // }
-        // for(int i=b; i<a; i++) {
-        //     s[i] = s[i%b];
-        // }
-        // for(int i=a; i<n; i++)
-        //     s[i]=s[i%a];
-
         for(int i=0; i<n; i++) {
             printf("%c",c+(i%b));
         }
