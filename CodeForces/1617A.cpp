@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define all(x) x.begin(), x.end()
+
 int main()
 {
     int i,t;
@@ -12,16 +14,19 @@ int main()
         cin >> t;
         int l = s.length();
         sort(s.begin(),s.end());
-        for(i=2; i<l; i++) {
-            if((s[i]==t[1] && s[i+1]==t[2])) {
-                int x = i;
-                while(s[x] == s[x-1])
-                    x++;
-                swap(s[i-1],s[x]);
-            }
-        }
-        //printf("\n",);
-        cout << s << endl;
+        vector<int> a(26);
+        for(i=0; i<l; i++)
+            a[s[i] - 'a']++;
+        if (t != "abc" || a[0] == 0 || a[1] == 0 || a[2] == 0) {
+			cout << s << '\n';
+		} else {
+			sort(all(s), [](auto x, auto y) {
+				if (x == 'b' && y == 'c') return false;
+				if (x == 'c' && y == 'b') return true;
+				return x < y;
+			});
+			cout << s << '\n';
+		}          
     }
     
     return 0;

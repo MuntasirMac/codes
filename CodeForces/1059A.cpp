@@ -1,31 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+ 
+#define nfs ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+ 
 int main()
 {
-    int n,L,a;
-    scanf("%d %d %d", &n, &L, &a);
-    int t[n+4], l[n+4], sum=0;
-    t[0] = 0;
+    nfs;
 
-    if(n>0) {
-        for(int i=0; i<n; i++) {
-            scanf("%d %d",&t[i], &l[i]);
-            sum += l[i];
-            if(i>0) {
-                int add = t[i-1]+l[i-1];
-                if(add != t[i])
-                    sum -= (t[i]-add);
-            }
-        }
+    int n,L,c,x=0;
+
+    cin >> n >> L >> c;
+    int st[n+1], len[n+1];
+
+    for(int i =0; i<n; ++i) {
+        cin >> st[i] >> len[i];
     }
-    sum += t[0];
 
-    //printf("%d %d\n",t[0], sum);
+    if(n==0) {
+        cout << L/c << "\n";
+        return 0;
+    }
 
-    int res = (L-sum)/a;
+    x += st[0] / c;
+    for(int i=0; i<n-1; i++) {
+        int gap = st[i+1] - (st[i]+len[i]);
+        x += gap/c;
+    }
 
-    printf("%d\n", res);
+    x += (L - (st[n-1] + len[n-1]))/c;
+
+    cout << x << "\n";
 
     return 0;
 }
